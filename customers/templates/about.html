@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .customer-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /* Optional: ensures image doesn't get distorted */
+    border-radius: 50%; /* Optional: makes the image circular */
+    }
+</style>
+
+<h1>This is my about page</h1>
+<!-- jumbotron -->
+
+<div class="mt-4 p-5 bg-primary text-white rounded">
+    <h1>My jumbotron</h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis quasi, laborum error nesciunt doloribus repellendus ex maiores id eligendi velit sapiente? Praesentium accusantium distinctio alias esse iste rem eligendi vel aliquid tempora cumque aliquam deleniti quos veritatis earum voluptate repellat maiores, temporibus fugit? Rerum aut excepturi aliquid a nihil, illo reprehenderit porro laborum. Obcaecati sequi omnis ducimus odio, mollitia quo.</p>
+</div>
+
+<!-- end jumbotron -->
+
+<h3>Customers List</h3>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Photo</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Update/Delete Customer</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for customer in data %}
+        <tr>
+            <td>
+                {% if customer.image %}
+                <img src="{{ customer.image.url }}" class="customer-img" alt="{{ customer.name }}'s image">
+                {% else %}
+                <img src="{% static 'img/avatar.webp' %}" class="customer-img" alt="Default Avatar">
+                {% endif %}
+            </td>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.gender }}</td>
+            <td>{{ customer.age }}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <a  href="{% url 'update' customer.id %}" class="btn btn-outline-success">Update</a>
+                    <a href="{% url 'delete' customer.id %}" type="button" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this customer?')">Delete</a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}  
+    </tbody>
+</table>
+
+
+{% endblock%}

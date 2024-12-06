@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="../../static/css/style.css"> -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <title>Index</title>
+    <style>
+      .message-dialog {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        padding: 20px;
+        max-width: auto;
+        text-align: center;
+      }
+      
+      .notification {
+        background-color: #f8f8f8;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+      }
+      
+      .notification.success {
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+      }
+      
+      .notification.warning {
+        background-color: #fcf8e3;
+        border-color: #faebcc;
+      }
+      
+      .notification.error {
+        background-color: #f2dede;
+        border-color: #ebccd1;
+      }
+      
+      .notification:before {
+        font-family: "Arial", sans-serif;
+        font-weight: bold;
+        font-size: 18px;
+        margin-right: 8px;
+      }
+      
+      .notification.success:before {
+        content: '\2713';
+        color: #3c763d;
+      }
+      
+      .notification.warning:before {
+        content: '\26A0';
+        color: #8a6d3b;
+      }
+      
+      .notification.error:before {
+        content: '\2717';
+        color: #a94442;
+      }
+  
+      .card-body{
+        background-color: #fff !important;
+        padding: 20px;
+        margin-top: 30px;
+      }
+  </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Navbar</a>
+              <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="navbar-collapse collapse" id="navbarColor02" style="">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'chat' %}">Lets Chat</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create' %}">Create</a>
+                  </li>
+                </ul>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+    </header>
+
+    <div class="btn-group mt-3" role="group" aria-label="Basic mixed styles example">
+      <a href="{% url 'create_order' %}" class="btn btn-outline-danger">Create Order</a>
+      <a href="{% url 'view_order' %}" class="btn btn-outline-warning">View Orders</a>
+      <a href="{% url 'order_api' %}" target="_blank" class="btn btn-outline-success">Order Api</a>
+    </div>
+
+    {% if messages %}
+      <div class="message-dialog" id="msg">
+    {% for message in messages %}
+      <div class="notification {{ message.tags }}">
+      <span class="icon"></span>
+      {{ message }}
+      </div>
+    {% endfor %}
+      </div>
+    {% endif %}
+    
+    {% block content %}
+    
+    {% endblock %}
+
+    <footer class="bg-warning">
+        <h2>This is a footer text</h2>
+        <p>The footer is the last bottom part of the webpage</p>
+    </footer>
+
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+      var messageDialog = document.getElementById('msg');
+      if (messageDialog) {
+          setTimeout(function() {
+              messageDialog.style.opacity = '1';
+              (function fade() {
+                  if ((messageDialog.style.opacity -= .1) < 0) {
+                      messageDialog.style.display = 'none';
+                  } else {
+                      requestAnimationFrame(fade);
+                  }
+                })();
+              }, 5000); // Waits for 3 seconds before starting to fade
+          }
+      })
+    </script>
+</body>
+</html>

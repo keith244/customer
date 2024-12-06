@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h3>Customers List</h3>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Update/Delete Order</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in data %}
+        <tr>
+            <td>{{ order.name }}</td>
+            <td>{{ order.price }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <a  href="{% url 'update_order' order.id %}" class="btn btn-outline-success">Update</a>
+                    <a href="{% url 'delete_order' order.id %}" type="button" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this order?')">Delete</a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}  
+    </tbody>
+</table>
+
+
+{% endblock %}

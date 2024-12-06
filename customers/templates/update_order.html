@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+
+    <div class="col-md-3"></div>
+    <div class="col-md-6 border border-success mt-3 mb-3">
+      <form action="" method="post">
+        {% csrf_token %}
+        <h3>Update Order</h3>
+        <div class="form-floating mb-3">
+          <input name="name" type="text" class="form-control" id="floatingName" value="{{order.name}}" placeholder="Name">
+          <label for="floatingName">Name</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input name="price" type="number" class="form-control" id="floatingPrice" value="{{order.price}}" placeholder="Price" step="0.01">
+          <label for="floatingPrice">Price</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input name="quantity" type="number" class="form-control" id="floatingQuantity" value="{{order.quantity}}" placeholder="Quantity">
+          <label for="floatingQuantity">Quantity</label>
+        </div>
+        <div class="btn-group mb-3" role="group" aria-label="Basic mixed styles example">
+          <button type="submit" class="btn btn-outline-success">Update</button>
+          <a href="{% url 'view_order' %}" type="button" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to cancel?')">Cancel</a>
+      </div>
+      </form>
+    </div>
+    <div class="col-md-3"></div>
+  
+</div>
+
+
+{% endblock %}

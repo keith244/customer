@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <h1>My index page</h1>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae perspiciatis sint cumque odio iure optio incidunt molestias, nemo adipisci iusto itaque et illum sunt aut provident cupiditate in unde neque. Amet, ab. Dolorum vitae, dignissimos cum mollitia quidem modi obcaecati minus laborum suscipit officiis doloremque magnam at dicta ipsum temporibus est aspernatur quos labore laudantium rerum exercitationem voluptatum. Omnis, sint.</p>
+
+    <!-- carousel -->
+
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img style="width: 300px;height: 400px;" src="{% static 'img/portfolio-1.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img style="width: 300px;height: 400px;" src="{% static 'img/portfolio-2.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img style="width: 300px;height: 400px;" src="{% static 'img/portfolio-3.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae perspiciatis sint cumque odio iure optio incidunt molestias, nemo adipisci iusto itaque et illum sunt aut provident cupiditate in unde neque. Amet, ab. Dolorum vitae, dignissimos cum mollitia quidem modi obcaecati minus laborum suscipit officiis doloremque magnam at dicta ipsum temporibus est aspernatur quos labore laudantium rerum exercitationem voluptatum. Omnis, sint.</p>
+
+    <!-- end carousel -->
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Reiciendis est magnam culpa, doloribus, dolore dicta non nobis 
+        tenetur fugiat odit molestiae voluptatum nesciunt qui. 
+        Quibusdam quas ea error natus molestiae, repellendus placeat 
+        distinctio eveniet explicabo blanditiis praesentium hic quasi vitae 
+        tempora laborum incidunt alias. 
+        Quasi magnam impedit veritatis facilis optio harum veniam, 
+        repellendus maiores aut hic fugit iure, sapiente ducimus.
+    </p>
+
+
+{% endblock %}
